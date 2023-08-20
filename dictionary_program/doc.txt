@@ -1,2 +1,0 @@
-This program fetches meaning of a given word
-
