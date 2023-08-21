@@ -1,64 +1,44 @@
-##Rock-Paper-Scissors
-import random, time, os
+import random
 
-print(
-"""
+def game() -> None:
+    """The main game function."""
 
--------------------------------------
-|     WELCOME TO MY R.P.S. GAME     |
-|                 @aliugurtalay     |
--------------------------------------
-|                                   |
-|Enter Your Choose[R-P-S]           |
--------------------------------------
-==
-"""
-       )
+    options = ['rock', 'paper', 'scissors']
+    your_score = 0
+    
+    while True:
+        for a, b in enumerate(options):
+            print(f'{a + 1}. {b}')
 
-key_root= True
-key = 0
-Score = 0
+        pc = int(input('Enter your choice: ')) # player choice
+        cc = random.randint(1, 3) # computer choice
 
-while key_root== True:
-    while key < 5:
-        key+=1
-        enter_data = input()
-        
-        stck = ["R","P","S"]
-        finaldata =stck[random.randint(0, 2)]
-        
-        if enter_data == finaldata:
-            Score+=1
-            print("Congrulations!! You are win")
+        print(f'You chose {options[pc - 1]}')
+        print(f'The computer chose {options[cc - 1]}')
+        if pc == cc:
+            print('It\'s a tie!')
+        elif (pc == 1 and cc == 2) or (pc == 2 and cc == 3) or (pc == 3 and cc == 1):
+            your_score -= 1
+            print('The computer wins!')
+        elif (pc == 1 and cc == 3) or (pc == 2 and cc == 1) or (pc == 3 and cc == 2):
+            your_score += 1
+            print('You win!')
         else:
-            
-            print("You're a loser")
-        
-    print("Your Score:", Score)
-    key = 0
-    time.sleep(1)
-    print("If you want to play new game write [OK]")
-    Choose = input()
-   
-    if Choose == "OK":
-        pass
-    else:
-        exit()
-    print(
-"""
--------------------------------------
-"""
-        )
-    
-    
-    
-    
-    
+            print('Invalid choice!')
+            continue
+        print(f'Your score: {your_score}')
 
-    
-    
+        play_again = input('Play again? (y/n): ')
 
-    
-    
+        if play_again == 'y':
+            continue
+        else:
+            break
 
 
+
+
+
+if __name__ == '__main__':
+    print('Welcome to Rock, Paper, Scissors!')
+    game()
